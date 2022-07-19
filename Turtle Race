@@ -1,0 +1,175 @@
+# Turtle Race
+from turtle import *
+from random import randint
+
+run = True
+place = 0
+
+screen=Screen()
+screen.bgcolor("limegreen")
+
+def moveTurt(turtle, x, y):
+  turtle.penup()
+  turtle.goto(x, y)
+  turtle.pendown()
+
+ice = Turtle()
+print()
+ice.shape("circle")
+ice.color("sky blue")
+ice.speed(0)
+moveTurt(ice, -100, 200)
+ice.begin_fill()
+ice.right(90)
+ice.forward(500)
+ice.left(90)
+ice.forward(50)
+ice.left(90)
+ice.forward(500)
+ice.left(90)
+ice.forward(50)
+ice.end_fill()
+ice.penup
+
+mud = Turtle()
+mud.shape("circle")
+mud.color("brown")
+mud.speed(0)
+moveTurt(mud, 150, 200)
+mud.begin_fill()
+mud.right(90)
+mud.forward(500)
+mud.left(90)
+mud.forward(50)
+mud.left(90)
+mud.forward(500)
+mud.left(90)
+mud.forward(50)
+mud.end_fill()
+mud.penup
+
+
+
+
+black = Turtle()
+black.shape("turtle") 
+black.color("black") 
+
+red = Turtle()
+red.shape("turtle")
+red.color("red")
+
+pink = Turtle()
+pink.shape("turtle") 
+pink.color("hot pink")
+
+green = Turtle()
+green.shape("turtle")
+green.color("dark green")
+
+white = Turtle()
+white.shape("turtle")
+white.color("grey") 
+
+blue = Turtle()
+blue.shape("turtle")
+blue.color("blue") 
+
+orange = Turtle()
+orange.shape("turtle")
+orange.color("orange") 
+
+turtles = [black, red, pink, green, white, blue, orange]
+
+posy = 160
+
+for x in range (7):
+  aturt = Turtle()
+  aturt.shape("square")
+  aturt.color("grey")
+  moveTurt(aturt, 25, posy) 
+  posy -=60 
+  
+posy2 = 160 
+
+for x in range (7):
+  aturt = Turtle()
+  aturt.shape("square")
+  aturt.color("grey")
+  moveTurt(aturt, 88, posy2) 
+  posy2 -=60 
+
+
+#How to make a vertical line
+
+x = -200
+
+for i in range(10):
+  lineMakingTurt = Turtle()
+  lineMakingTurt.speed(0)
+  moveTurt(lineMakingTurt ,x, 200)
+  lineMakingTurt.setheading(270)
+  lineMakingTurt.forward(500)
+  x += 50
+
+
+
+y = 160
+
+for turt in turtles:
+  moveTurt(turt,-215, y) 
+  y -=60 
+
+
+while run:
+
+  for turtle in turtles:
+    xcor, ycor = turtle.pos()
+
+    if xcor >= -100 and xcor <= -70:
+      turtle.forward(randint(45,50))
+
+    elif xcor >= 0 and xcor <= 12:
+      turtle.left(90)
+      turtle.forward(30)
+      turtle.right(90)
+      turtle.forward(15)
+
+    elif xcor >= 40 and xcor <= 52:
+      turtle.right(90)
+      turtle.forward(30)
+      turtle.left(90)
+      turtle.forward(15)
+    
+    elif xcor >= 60 and xcor <= 72:
+      turtle.right(90)
+      turtle.forward(30)
+      turtle.left(90)
+      turtle.forward(40)
+    
+    elif xcor >= 90 and xcor <= 120:
+      turtle.left(90)
+      turtle.forward(30)
+      turtle.right(90)
+      turtle.forward(15)
+
+    elif xcor >= 150 and xcor <= 200:
+      turtle.forward(randint(1,2))
+    
+    else:
+      turtle.forward(randint(11,12))
+    
+    #if xcor >= 50 and xcor <= 75:
+    #  turtle.left(12)
+
+    #if xcor > 75 and xcor <= 100:
+    # turtle.right(12)
+
+    if xcor >= 250:
+      place += 1
+      color = turtle.color()[0]
+      #print(color, "came in", place, "place!")
+      print(color, ":", place)
+      turtles.remove(turtle)
+      if place == 7:
+        run = False
